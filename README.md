@@ -4,4 +4,4 @@ The [Chinook database](http://chinookdatabase.codeplex.com/releases/view/55681) 
 
 ## Running the code
 
-Just clone, and `dotnet run` it!
+Just clone, `dotnet restore` and `dotnet run` it!

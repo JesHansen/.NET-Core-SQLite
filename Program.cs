@@ -9,16 +9,18 @@ namespace EFSQLite
     {
       using (var context = new ChinookContext())
       {
-        var artists = from a in context.Artists
-                      where a.Name.StartsWith("A")
-                      orderby a.Name
-                      select a;
+        var artistStartingWithA = context.Artists
+          .Where(x => StartsWith(x, "A"))
+          .OrderBy(x => x.Name);
 
-        foreach (var artist in artists)
-        {
+        foreach (var artist in artistStartingWithA)
           Console.WriteLine(artist.Name);
-        }
       }
+    }
+
+    static bool StartsWith(Artist a, string initial)
+    {
+      return a.Name.StartsWith(initial, StringComparison.CurrentCulture);
     }
   }
 }
